@@ -90,17 +90,17 @@ namespace CrazyflieDotNet.Crazyflie.TransferProtocol
 		{
 			try
 			{
-				var rollByte = (byte) Roll;
-				var pitchByte = (byte) Pitch;
-				var yawByte = (byte) Yaw;
-				var thrustByte = (byte) Thurst;
+                var rollByte = BitConverter.GetBytes(Roll); //4byte
+                var pitchByte = BitConverter.GetBytes(Pitch); //4byte
+                var yawByte = BitConverter.GetBytes(Yaw); //4byte1
+                var thrustByte = BitConverter.GetBytes(Thurst); //2byte
 
 				var commanderPayloadBytes = new byte[_commanderPayloadSize];
 
-				commanderPayloadBytes[0] = rollByte; // @ 0
-				commanderPayloadBytes[_floatSize] = pitchByte; // @ 4
-				commanderPayloadBytes[_floatSize * 2] = yawByte; // @ 8
-				commanderPayloadBytes[_floatSize * 3] = thrustByte; // @ 12
+                rollByte.CopyTo(commanderPayloadBytes, 0);
+                pitchByte.CopyTo(commanderPayloadBytes, _floatSize);
+                yawByte.CopyTo(commanderPayloadBytes, _floatSize * 2);
+                thrustByte.CopyTo(commanderPayloadBytes, _floatSize * 3);
 
 				return commanderPayloadBytes;
 			}

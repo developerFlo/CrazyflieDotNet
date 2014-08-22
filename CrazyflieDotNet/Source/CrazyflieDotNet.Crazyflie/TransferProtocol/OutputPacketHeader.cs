@@ -69,7 +69,7 @@ namespace CrazyflieDotNet.Crazyflie.TransferProtocol
 				var portByteAnd15 = (byte) (portByte & 0x0F);
 				var portByteAnd15LeftShifted4 = (byte) (portByteAnd15 << 4);
 
-				var reservedLeftShifted2 = (byte) (0x03 << 2);
+				var reservedLeftShifted2 = (byte) (0x00 << 2);
 
 				var channelByte = (byte) Channel;
 				var channelByteAnd3 = (byte) (channelByte & 0x03);

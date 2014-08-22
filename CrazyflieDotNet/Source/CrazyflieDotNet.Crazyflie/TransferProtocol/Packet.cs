@@ -109,7 +109,7 @@ namespace CrazyflieDotNet.Crazyflie.TransferProtocol
 
 			if (headerByte != null && headerByteLength > 0)
 			{
-				Array.Copy(new[] {headerByte}, 0, packetBytesArray, 0, headerByteLength);
+				Array.Copy(new[] {headerByte.Value}, 0, packetBytesArray, 0, headerByteLength);
 			}
 
 			if (payloadBytes != null && payloadBytesLength > 0)

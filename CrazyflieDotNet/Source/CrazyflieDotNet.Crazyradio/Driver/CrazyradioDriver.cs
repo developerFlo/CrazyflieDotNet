@@ -539,7 +539,7 @@ namespace CrazyflieDotNet.Crazyradio.Driver
 
 			var crazyRadioDrivers = new List<ICrazyradioDriver>();
 
-			var crazyRadiosRegDeviceList = UsbDevice.AllDevices.FindAll(new UsbDeviceFinder(CrazyradioDeviceId.VendorId, CrazyradioDeviceId.ProductId));
+			var crazyRadiosRegDeviceList = UsbDevice.AllDevices.FindAll(new UsbDeviceFinder(CrazyradioDeviceId.VendorId, CrazyradioDeviceId.ProductId)).Where(r => r.Device != null).ToList();
 			if (crazyRadiosRegDeviceList.Any())
 			{
 				Log.DebugFormat("Found {0} Crazyradio USB dongle(s).", crazyRadiosRegDeviceList.Count);
